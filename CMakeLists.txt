@@ -26,3 +26,18 @@ target_link_libraries(${PROJECT_NAME}_main Eigen3::Eigen ${PROJECT_NAME})
 # Set compiler flags for better optimization and debugging
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -Wextra")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
+
+# Install library
+install(TARGETS ${PROJECT_NAME}
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+
+# Install executable
+install(TARGETS ${PROJECT_NAME}_main
+    RUNTIME DESTINATION bin
+)
+
+# Install headers
+install(DIRECTORY include/ DESTINATION include)
